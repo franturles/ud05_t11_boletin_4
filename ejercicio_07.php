@@ -33,6 +33,7 @@ if($_SESSION["intentos"] <= 4){
     }
 }else{
     echo "Numero de intentos terminado";
+    session_abort();
 }
 ?>
     </body>
