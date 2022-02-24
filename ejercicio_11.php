@@ -17,9 +17,9 @@ enteros a partir de uno que se introduce por teclado.</h3>
     $Numero=$_REQUEST["numero"];
     echo "<table border='1px'>
     <tr>
+        <th>Numero</th>
         <th>Cuadrado</th>
         <th>Cubo</th>
-        <th>Numero</th>
     </tr>";
         
     for ($i=$Numero; $i < ($Numero+5); $i++) {
