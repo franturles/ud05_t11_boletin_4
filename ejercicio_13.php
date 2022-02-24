@@ -12,6 +12,7 @@
         <p>Numero: <input type='number' name='numero'/></p>
         <p><input type='submit' value='Submit'/></p>
     <?php
+    /*Problemas con la inserccion al array*/
     $valores=array();
     $Numero=$_REQUEST["numero"];
     while(count($valores) <= 10){
