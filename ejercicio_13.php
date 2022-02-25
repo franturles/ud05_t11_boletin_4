@@ -8,19 +8,62 @@
             son negativos.</h3>
     </head>
     <body>
-    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
+    
+    <?php
+    session_start();
+    $_SESSION['pos'];
+    $_SESSION['neg'];
+    $valores = $_SESSION["valores"]; 
+    $contar = isset($_SESSION["contar"])?$_SESSION["contar"]:0;
+
+    if (isset($_REQUEST["reiniciar"])) {
+        $_SESSION["contar"] = 0;
+        $contar = 0;
+        $_SESSION["valores"] = 0;
+        $valores = 0;
+        $_SESSION['pos'] = 0;
+        $_SESSION['neg'] = 0;
+    }
+
+    $nu=$_REQUEST["numero"];
+    echo "<p>ANTES DE IF</p>";
+    print_r($valores);
+    echo "<br />Valores introducidos: $contar";
+
+    if ($contar < 2) {
+        ?>
+
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
         <p>Numero: <input type='number' name='numero'/></p>
         <p><input type='submit' value='Submit'/></p>
-    <?php
-    /*Problemas con la inserccion al array*/
-    $valores=array();
-    $Numero=$_REQUEST["numero"];
-    while(count($valores) <= 10){
-    array_push($valores,$_REQUEST["numero"]);
+        <p><input type='submit' name="reiniciar" value='Reiniciar'/></p>
+        
+        <?php
+        if (empty($valores) && !empty($nu)) {
+            $valores = array();
+            array_push($valores, $nu);
+            $contar=count($valores);
+        } else {
+            array_push($valores, $nu);
+            $contar=count($valores);
+        }
+
+        echo "<p>DENTRO DE IF</p>";
+        print_r($valores);
+        echo "<br />Valores introducidos: $contar";
+    } elseif ($contar == 2) {
+        ?>
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <p><input type='submit' name="reiniciar" value='Reiniciar'/></p>
+            </form>
+        <?php
+            echo "<p>DENTRO DE ELSE</p>";
+            print_r($valores);
+            echo "Valores introducidos: $contar";
     }
-    print_r($valores);
-    for($i=0;$i < 10; $i++){
-    }
+    $_SESSION["valores"] = $valores;
+    $_SESSION["contar"] = $contar;
     ?>
+
     </body>
 </html>
