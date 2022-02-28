@@ -12,11 +12,18 @@ satisfactoriamente”. Tendremos cuatro oportunidades para abrir la caja fuerte.
     <body>
     <form action="ejercicio_07.php" enctype='multipart/form-data' method='post'>
         <p>Numero: <input type='number' name='numero' min=0/></p>
-        <p><input type='submit' value='Submit'/></p>
+        <p><input type='submit' value='Submit'/></p>   
     </from>
     <?php
-    $_SESSION["intentos"]= 0;
     session_start();
+
+    if (isset($_REQUEST["reiniciar"])) {
+        $_SESSION["intentos"] = 0;
+        $_SESSION["limite"] = 6;
+    }
+    $Limite = $_SESSION['limite'];
+
+
 if($_SESSION["intentos"] <= 4){        
         $Numero=isset($_REQUEST["numero"])?$_REQUEST["numero"]:"";
         $Clave=2222;
@@ -27,13 +34,20 @@ if($_SESSION["intentos"] <= 4){
         }else{
             echo "Contraseña es incorrecta";
             $_SESSION["intentos"]= $_SESSION["intentos"] + 1;
+            $Limite = $Limite - 1;
+            echo "<br>Te queda $Limite intentos";
+            $_SESSION["limite"] = $Limite;
         }
     }else{
         echo "Tiene que ser de 5 cifras";
     }
 }else{
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+        <p><input type='submit' name="reiniciar" value='Reiniciar'/></p>
+    </form>
+<?php
     echo "Numero de intentos terminado";
-    session_abort();
 }
 ?>
     </body>

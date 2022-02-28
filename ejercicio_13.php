@@ -10,11 +10,13 @@
     <body>
     
     <?php
+    // Valores de sesion ->
     session_start();
     $_SESSION['pos'];
     $_SESSION['neg'];
     $valores = $_SESSION["valores"]; 
     $contar = isset($_SESSION["contar"])?$_SESSION["contar"]:0;
+    // <-
 
     if (isset($_REQUEST["reiniciar"])) {
         $_SESSION["contar"] = 0;
@@ -26,9 +28,6 @@
     }
 
     $nu=$_REQUEST["numero"];
-    echo "<p>ANTES DE IF</p>";
-    print_r($valores);
-    echo "<br />Valores introducidos: $contar";
 
     if ($contar < 2) {
         ?>
@@ -48,18 +47,22 @@
             $contar=count($valores);
         }
 
-        echo "<p>DENTRO DE IF</p>";
-        print_r($valores);
         echo "<br />Valores introducidos: $contar";
     } elseif ($contar == 2) {
+        foreach ($valores as $Numeros) {
+            for ($i=0; $i < 2; $i++) { 
+               if ($Numeros[$i] > 0) {
+                    echo "<br>$Numeros[$i] es positivo";
+               }elseif ($Numeros[$i] < 0) {
+                    echo "<br>$Numeros[$i] es negativo";
+               }
+            }
+        }
         ?>
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                 <p><input type='submit' name="reiniciar" value='Reiniciar'/></p>
             </form>
         <?php
-            echo "<p>DENTRO DE ELSE</p>";
-            print_r($valores);
-            echo "Valores introducidos: $contar";
     }
     $_SESSION["valores"] = $valores;
     $_SESSION["contar"] = $contar;
