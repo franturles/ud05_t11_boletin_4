@@ -29,7 +29,7 @@
 
     $nu=$_REQUEST["numero"];
 
-    if ($contar < 2) {
+    if ($contar < 10) {
         ?>
 
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
@@ -41,21 +41,21 @@
         if (empty($valores) && !empty($nu)) {
             $valores = array();
             array_push($valores, $nu);
+            print_r($valores);
             $contar=count($valores);
         } else {
             array_push($valores, $nu);
+            print_r($valores);
             $contar=count($valores);
         }
 
         echo "<br />Valores introducidos: $contar";
-    } elseif ($contar == 2) {
+    } elseif ($contar == 10) {
         foreach ($valores as $Numeros) {
-            for ($i=0; $i < 2; $i++) { 
-               if ($Numeros[$i] > 0) {
-                    echo "<br>$Numeros[$i] es positivo";
-               }elseif ($Numeros[$i] < 0) {
-                    echo "<br>$Numeros[$i] es negativo";
-               }
+            if($Numeros < 0){
+                echo "<br>$Numeros es negativo";
+            }else{
+                echo "<br>$Numeros es positivo";
             }
         }
         ?>
