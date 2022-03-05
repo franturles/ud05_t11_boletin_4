@@ -28,7 +28,7 @@ de las 5 que se deben dar a elegir mediante un formulario.</h3>
     for($i=1;$i <= $Altura; $i++){
         for ($m = 1; $m <= 1 * $i-1; $m++){
             ?>
-            <img src="<?php echo $Figura?>" height="30">
+            <img src="<?php echo $Figura?>" height="20">
             <?php
         }
         echo '<br>';
