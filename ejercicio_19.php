@@ -25,8 +25,8 @@ de las 5 que se deben dar a elegir mediante un formulario.</h3>
     <?php
     $Altura=$_REQUEST["numero"];
     $Figura=$_REQUEST["figura"];
-    for($i=1;$i <= $Altura; $i++){
-        for ($m = 1; $m <= 1 * $i-1; $m++){
+    for($i=0;$i <= $Altura; $i++){
+        for ($m = 0; $m <= 1 * $i-1; $m++){
             ?>
             <img src="<?php echo $Figura?>" height="20">
             <?php
