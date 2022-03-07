@@ -3,7 +3,7 @@
     <title>UD05_T11_boletin_4</title>
         <meta charset='UTF-8'>
         <h1>UD05_T11</h1>
-        <h2>Ejercicio 18</h2>
+        <h2>Ejercicio 20</h2>
         <h3>Realiza un programa que pinte una pirámide por pantalla. La altura se debe pedir por teclado
 mediante un formulario. La pirámide estará hecha de bolitas, ladrillos o cualquier otra imagen
 de las 5 que se deben dar a elegir mediante un formulario.</h3>
@@ -25,11 +25,32 @@ de las 5 que se deben dar a elegir mediante un formulario.</h3>
     <?php
     $Altura=$_REQUEST["numero"];
     $Figura=$_REQUEST["figura"];
-    for($i=0;$i <= $Altura; $i++){
-        for ($m = 0; $m <= 1 * $i-1; $m++){
+
+        for($i=1;$i <= $Altura; $i++){
+            if ($i==$Altura){
+                for ($m=1; $m <= $i-1; $m++) { 
+                    ?><img src="<?php echo $Figura?>" height="20"><?php
+                    echo "&nbsp&nbsp&nbsp&nbsp";
+                }
+                echo "<br/>";
+            }else {
+                if($i<=2){
+                    for ($m = 1; $m <= $i; $m++){
+                        ?><img src="<?php echo $Figura?>" height="20"><?php
+                }
+                echo "<br/>";
+            }
+            else{
+                ?><img src="<?php echo $Figura?>" height="20"><?php
+                for ($m = 1; $m <= $i-2; $m++){
+                    echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            }
             ?><img src="<?php echo $Figura?>" height="20"><?php
+            echo "&nbsp";
+            echo "<br/>";
+            }
         }
-        echo '<br>';
     }
+
     ?>
 </html>
