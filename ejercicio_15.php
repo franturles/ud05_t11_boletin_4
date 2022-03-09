@@ -21,7 +21,8 @@ el 5, se deberán mostrar 2¹, 2², 2³, 2⁴, 2⁵.</h3>
 $base = $_REQUEST["base"];
 $exponente = $_REQUEST["exponente"];
 
-for ($i=1; $i <= $exponente; $i++) { 
-    echo "<p>$base<sup>$i</sup></p>";
+for ($i=1; $i <= $exponente; $i++) {
+    $Resultado = pow($base,$i); 
+    echo "<p>$base<sup>$i</sup>= $Resultado</p>";
 }
 ?>
