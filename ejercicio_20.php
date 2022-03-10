@@ -4,9 +4,7 @@
         <meta charset='UTF-8'>
         <h1>UD05_T11</h1>
         <h2>Ejercicio 20</h2>
-        <h3>Realiza un programa que pinte una pirámide por pantalla. La altura se debe pedir por teclado
-mediante un formulario. La pirámide estará hecha de bolitas, ladrillos o cualquier otra imagen
-de las 5 que se deben dar a elegir mediante un formulario.</h3>
+        <h3>Igual que el ejercicio anterior pero esta vez se debe pintar una pirámide hueca.</h3>
     </head>
     <body>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>

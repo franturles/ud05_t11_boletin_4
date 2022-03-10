@@ -15,7 +15,7 @@
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
         <p>Numero: <input type='number' name='numero'/></p>
         <p><input type='submit' value='Submit'/></p>
-    </from>
+    </form>
     <?php
     if(!isset($_SESSION['numeros'])){
         $_SESSION['numeros'] = array();
