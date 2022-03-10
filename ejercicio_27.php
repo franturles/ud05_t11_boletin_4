@@ -13,12 +13,12 @@ leído por teclado.</h3>
         <p><input type='submit' value='Submit'/></p>
     </from>
     <?php
+    $Contar=0;
     $Numero = $_REQUEST["numero"];
     for ($i=1; $i <= $Numero; $i++) { 
         $Multiplos = $i*3;
+        $Contar++;
         echo "</br>$Multiplos";
     }
-    
-    
-    
+    echo "<br>Hay $Contar multiplos";
     ?>
