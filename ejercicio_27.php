@@ -14,11 +14,15 @@ leído por teclado.</h3>
     </from>
     <?php
     $Contar=0;
+    $Total=0;
     $Numero = $_REQUEST["numero"];
     for ($i=1; $i <= $Numero; $i++) { 
         $Multiplos = $i*3;
         $Contar++;
+        $Total= $Total+$Multiplos;
         echo "</br>$Multiplos";
     }
     echo "<br>Hay $Contar multiplos";
+    
+    echo "</br> La suma total es $Total";
     ?>
