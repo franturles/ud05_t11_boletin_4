@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
     <head>
     <title>UD05_T11_boletin_4</title>
@@ -10,24 +13,27 @@ programa nos pedirá la combinación para abrirla. Si no acertamos, se nos mostr
 satisfactoriamente”. Tendremos cuatro oportunidades para abrir la caja fuerte.</h3>
     </head>
     <body>
-    <form action="ejercicio_07.php" enctype='multipart/form-data' method='post'>
-        <p>Numero: <input type='number' name='numero' min=0/></p>
-        <p><input type='submit' value='Submit'/></p>   
-    </from>
     <?php
-    session_start();
-
-    if (isset($_REQUEST["reiniciar"])) {
+    function pintarformulario(){
+    ?>
+    <form action="ejercicio_07.php" enctype='multipart/form-data' method='post'>
+    <p>Numero: <input type='number' name='numero' min=0/></p>
+    <p><input type='submit' value='Submit'/></p>   
+    </form>
+    <?php
+        
+    }
+    if (isset($_REQUEST["reiniciar"]) || !isset($_SESSION["intentos"]) || $_SESSION["intentos"]==0) {
         $_SESSION["intentos"] = 0;
-        $_SESSION["limite"] = 6;
+        $_SESSION["limite"] = 4;
     }
     $Limite = $_SESSION['limite'];
 
-
 if($_SESSION["intentos"] <= 4){        
+        pintarformulario();
         $Numero=isset($_REQUEST["numero"])?$_REQUEST["numero"]:"";
         $Clave=2222;
-    if(strlen($Numero) <= 4){
+    if(strlen($Numero) == 4){
         if($Numero == $Clave){
             echo "Contraseña Correcta";
             $_SESSION["intentos"]= 0;
@@ -39,7 +45,7 @@ if($_SESSION["intentos"] <= 4){
             $_SESSION["limite"] = $Limite;
         }
     }else{
-        echo "Tiene que ser de 5 cifras";
+        echo "Tiene que ser de 4 cifras";
     }
 }else{
     ?>
@@ -48,6 +54,15 @@ if($_SESSION["intentos"] <= 4){
     </form>
 <?php
     echo "Numero de intentos terminado";
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    // Finalmente, destruir la sesión.
+    session_destroy();
 }
 ?>
     </body>

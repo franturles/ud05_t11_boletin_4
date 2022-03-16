@@ -13,17 +13,16 @@ leído por teclado.</h3>
         <p><input type='submit' value='Submit'/></p>
     </from>
     <?php
-    $Multiplos = array();
+    $Contar=0;
+    $Total=0;
     $Numero = $_REQUEST["numero"];
     for ($i=1; $i <= $Numero; $i++) { 
-        if ($i % 3 == 0) {
-            array_push($Multiplos,$i);
-        }
+        $Multiplos = $i*3;
+        $Contar++;
+        $Total= $Total+$Multiplos;
+        echo "</br>$Multiplos";
     }
-    foreach ($Multiplos as $Multiplo) {
-        echo "</br>$Multiplo";
-    }
+    echo "<br>Hay $Contar multiplos";
     
-    
-    
+    echo "</br> La suma total es $Total";
     ?>
