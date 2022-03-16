@@ -29,7 +29,7 @@ satisfactoriamente”. Tendremos cuatro oportunidades para abrir la caja fuerte.
     }
     $Limite = $_SESSION['limite'];
 
-if($_SESSION["intentos"] <= 4){        
+if($_SESSION["intentos"] < 4){        
         pintarformulario();
         $Numero=isset($_REQUEST["numero"])?$_REQUEST["numero"]:"";
         $Clave=2222;

@@ -16,10 +16,11 @@ positivo).</h3>
     <?php
     if(isset($_REQUEST["numero"])&& filter_var($_REQUEST["numero"],FILTER_VALIDATE_INT)&& $_REQUEST["numero"]> 0){
         $Numero=$_REQUEST["numero"];
-        for ($i=0; $i < 100 ; $i++) { 
-            echo "<br>$Numero";
-            $Numero = $Numero + 1;
+        for ($i=1; $i < 100 ; $i++) { 
+            $Nuevo = $Numero + $i;
+            $Resu = $Resu + $Nuevo;
         }
+        echo "La suma del número $Numero mas sus 100 números siguientes es: $Resu";
     }else{
         echo "Vuelva a introducir el numero";
     }
