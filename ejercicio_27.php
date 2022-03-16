@@ -13,10 +13,15 @@ leído por teclado.</h3>
         <p><input type='submit' value='Submit'/></p>
     </from>
     <?php
+    $Multiplos = array();
     $Numero = $_REQUEST["numero"];
     for ($i=1; $i <= $Numero; $i++) { 
-        $Multiplos = $i*3;
-        echo "</br>$Multiplos";
+        if ($i % 3 == 0) {
+            array_push($Multiplos,$i);
+        }
+    }
+    foreach ($Multiplos as $Multiplo) {
+        echo "</br>$Multiplo";
     }
     
     
